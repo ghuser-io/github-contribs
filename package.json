@@ -1,0 +1,51 @@
+{
+  "name": "github-contribs",
+  "version": "0.0.1",
+  "description": "List all GitHub repos a user has contributed to since the beginning of time.",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AurelienLourot/github-contribs.git"
+  },
+  "author": {
+    "name": "Aurelien Lourot",
+    "email": "aurelien.lourot@gmail.com",
+    "url": "https://github.com/AurelienLourot"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "github",
+    "repo",
+    "repositories",
+    "contrib",
+    "contribs",
+    "contributions"
+  ],
+  "dependencies": {
+    "es6-promise-pool": "^2.5.0",
+    "fetch-retry": "^1.2.1",
+    "htmlparser": "^1.7.7",
+    "meow": "^3.3.0",
+    "moment": "^2.22.1",
+    "ora": "^2.0.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  }
+}
