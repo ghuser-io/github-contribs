@@ -22,6 +22,8 @@ reframejs/reframe
 > In construction. Not available on npm yet. For now do
 >
 > ```bash
+> $ git clone https://github.com/AurelienLourot/github-contribs.git
+> $ cd github-contribs/
 > $ yarn install
 > $ ./cli.js AurelienLourot
 > ```
@@ -65,5 +67,5 @@ API, we can't use a token to raise the limit.
 
 ### Isn't it likely to break?
 
-Yes, since it's not a public interface. We're monitoring it and will react as fast as we can when
-it breaks.
+Yes, it is since that interface isn't public. We're monitoring it and will react as fast as we can
+when it breaks.
