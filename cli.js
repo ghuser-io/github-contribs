@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-(() => {
+(async () => {
 
   const meow = require('meow');
   const ora = require('ora');
@@ -49,13 +49,13 @@ optional arguments:
   }
 
   const user = cli.input[0];
-  githubContribs(user, cli.flags.since, !cli.flags.quiet && ora, cli.flags.verbose && console).then(data => {
-    if (!cli.flags.quiet) {
-      console.log(`${data.size} repo(s) found:`);
-    }
-    for (let repo of data) {
-      console.log(repo);
-    }
-  });
+  const repos = await githubContribs(user, cli.flags.since, !cli.flags.quiet && ora,
+                                     cli.flags.verbose && console);
+  if (!cli.flags.quiet) {
+    console.log(`${repos.size} repo(s) found:`);
+  }
+  for (let repo of repos) {
+    console.log(repo);
+  }
 
 })();
