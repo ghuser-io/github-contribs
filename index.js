@@ -95,15 +95,14 @@
               retries: 300,
             },
           );
-          commitsSpinner.start(`Fetching all commits [${++numOfQueriedDays}/${numOfDaysToQuery}]`);
           const userCommitsHtml = await userCommits.text();
           const repos = htmlToRepos(userCommitsHtml);
+          commitsSpinner.stop(); // temporary stop for logging
           for (let repo of repos) {
-            commitsSpinner.stop();
             console.log(`${currDateStr}: ${repo}`);
             result.add(repo);
-            commitsSpinner.start();
           }
+          commitsSpinner.start(`Fetching all commits [${++numOfQueriedDays}/${numOfDaysToQuery}]`);
         })();
       };
     })();
