@@ -8,7 +8,7 @@ List **all** GitHub repos a user has contributed to **since the beginning of tim
 ```bash
 $ github-contribs AurelienLourot
 ✔ Fetched first day at GitHub: 2015-04-04.
-⚠ Be patient. The whole process might take up to 4 hours...
+⚠ Be patient. The whole process might take up to 4 hours... Consider using `--since`.
 ✔ Fetched all commits.
 35 repo(s) found:
 AurelienLourot/lsankidb
