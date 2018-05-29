@@ -113,7 +113,7 @@
 
     const numOfDaysToQuery = (newestDate - oldestDate) / (24 * 60 * 60 * 1000) + 1;
 
-    const durationMsToQueryADay = 14000;
+    const durationMsToQueryADay = 3500;
     let warning = `Be patient. The whole process might take up to ${moment.duration(numOfDaysToQuery * durationMsToQueryADay).humanize()}...`;
     if (!since && !until) {
       warning += ' Consider using `--since` and/or `--until`.';
