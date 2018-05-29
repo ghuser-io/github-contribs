@@ -10,7 +10,7 @@
 
   const cli = meow(`
 usage:
-  $ github-contribs [--quiet|--verbose] [--since YYYY-MM-DD] USER
+  $ github-contribs [--quiet|--verbose] [--since YYYY-MM-DD] [--until YYYY-MM-DD] USER
   $ github-contribs --help
   $ github-contribs --version
 
@@ -21,6 +21,7 @@ optional arguments:
   --quiet              do not show progress while querying GitHub, only the final result
   --verbose            show debugging information
   --since YYYY-MM-DD   limit the results (default: first day at GitHub)
+  --until YYYY-MM-DD   limit the results (default: today)
   --version            show program's version number and exit
   --help               show this help message and exit
 `, {
@@ -30,6 +31,7 @@ optional arguments:
   ],
   string: [
     'since',
+    'until',
   ],
 });
 
@@ -49,8 +51,8 @@ optional arguments:
   }
 
   const user = cli.input[0];
-  const repos = await githubContribs(user, cli.flags.since, !cli.flags.quiet && ora,
-                                     cli.flags.verbose && console);
+  const repos = await githubContribs(user, cli.flags.since, cli.flags.until,
+                                     !cli.flags.quiet && ora, cli.flags.verbose && console);
   if (!cli.flags.quiet) {
     console.log(`${repos.size} repo(s) found:`);
   }

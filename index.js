@@ -7,7 +7,7 @@
   const htmlparser = require('htmlparser');
   const moment = require('moment');
 
-  module.exports = async (user, since, ora, console) => {
+  module.exports = async (user, since, until, ora, console) => {
     ora = ora || (() => {
       return {
         start: function () { return this; },
@@ -21,7 +21,7 @@
     };
 
     const joinDate = await getFirstDayAtGithub(user, ora);
-    const result = await getContribs(user, joinDate, since, ora, console);
+    const result = await getContribs(user, joinDate, since, until, ora, console);
     return result;
   };
 
@@ -36,7 +36,7 @@
     return result;
   };
 
-  const getContribs = async (user, joinDate, since, ora, console) => {
+  const getContribs = async (user, joinDate, since, until, ora, console) => {
     const htmlToRepos = html => {
       const repos = new Set();
 
@@ -76,9 +76,13 @@
     }
 
     const today = stringToDate(dateToString(new Date())); // get rid of hh:mm:ss.mmmm
+    let newestDate = today;
+    if (until) {
+      newestDate = new Date(Math.min(newestDate, stringToDate(until)));
+    }
 
     const getContribsOnOneDay = (() => {
-      let currDate = today;
+      let currDate = newestDate;
       let numOfQueriedDays = 0;
       return () => {
         if (currDate < oldestDate) {
@@ -107,12 +111,12 @@
       };
     })();
 
-    const numOfDaysToQuery = (today - oldestDate) / (24 * 60 * 60 * 1000) + 1;
+    const numOfDaysToQuery = (newestDate - oldestDate) / (24 * 60 * 60 * 1000) + 1;
 
     const durationMsToQueryADay = 14000;
     let warning = `Be patient. The whole process might take up to ${moment.duration(numOfDaysToQuery * durationMsToQueryADay).humanize()}...`;
-    if (!since) {
-      warning += ' Consider using `--since`.';
+    if (!since && !until) {
+      warning += ' Consider using `--since` and/or `--until`.';
     }
     ora(warning).warn();
 
