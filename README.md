@@ -10,10 +10,10 @@ $ github-contribs AurelienLourot
 ✔ Fetched first day at GitHub: 2015-04-04.
 ⚠ Be patient. The whole process might take up to 4 hours... Consider using `--since` and/or `--until`.
 ✔ Fetched all commits.
-35 repo(s) found:
+34 repo(s) found:
 AurelienLourot/lsankidb
-dracula/gitk
 reframejs/reframe
+dracula/gitk
 ...
 ```
 
