@@ -161,7 +161,7 @@
     const durationMsToQueryADay = 3500;
     let warning = `Be patient. The whole process might take up to ${moment.duration(numOfDaysToQuery * durationMsToQueryADay).humanize()}...`;
     if (!since && !until) {
-      warning += ' Consider using `--since` and/or `--until`.';
+      warning += ' Consider using --since and/or --until';
     }
     ora(warning).warn();
 

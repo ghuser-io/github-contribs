@@ -1,3 +1,5 @@
+[![npm version](https://img.shields.io/npm/v/@ghuser/github-contribs.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
+
 # github-contribs
 
 List **all** GitHub repos a user has contributed to **since the beginning of time**:
@@ -8,7 +10,7 @@ List **all** GitHub repos a user has contributed to **since the beginning of tim
 ```bash
 $ github-contribs AurelienLourot
 ✔ Fetched first day at GitHub: 2015-04-04.
-⚠ Be patient. The whole process might take up to an hour... Consider using `--since` and/or `--until`.
+⚠ Be patient. The whole process might take up to an hour... Consider using --since and/or --until
 ✔ Fetched all commits and PRs.
 35 repo(s) found:
 AurelienLourot/lsankidb
@@ -19,18 +21,17 @@ dracula/gitk
 
 ## Installation
 
-> In construction. Not available on npm yet. For now do
->
-> ```bash
-> $ git clone https://github.com/AurelienLourot/github-contribs.git
-> $ cd github-contribs/
-> $ yarn install
-> $ ./cli.js AurelienLourot
-> ```
-
-
 ```bash
 $ sudo npm install -g @ghuser/github-contribs
+```
+
+## Contributing
+
+To run your local changes:
+
+```bash
+$ yarn install
+$ ./cli.js --help
 ```
 
 ## Team
@@ -69,3 +70,11 @@ API, we can't use a token to raise the limit.
 
 Yes, it is since that interface isn't public. We're monitoring it and will react as fast as we can
 when it breaks.
+
+## Changelog
+
+**0.0.2** (2018-05-29):
+  * Cosmetic improvements to the [npm page](https://www.npmjs.com/package/@ghuser/github-contribs).
+
+**0.0.1** (2018-05-29):
+  * Initial version.
