@@ -30,7 +30,7 @@ dracula/gitk
 
 
 ```bash
-$ sudo npm install -g github-contribs
+$ sudo npm install -g @ghuser/github-contribs
 ```
 
 ## Team

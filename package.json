@@ -1,5 +1,5 @@
 {
-  "name": "github-contribs",
+  "name": "@ghuser/github-contribs",
   "version": "0.0.1",
   "description": "List all GitHub repos a user has contributed to since the beginning of time.",
   "license": "Unlicense",
@@ -19,10 +19,6 @@
   "scripts": {
     "test": "xo && ava"
   },
-  "files": [
-    "index.js",
-    "cli.js"
-  ],
   "keywords": [
     "cli-app",
     "cli",
