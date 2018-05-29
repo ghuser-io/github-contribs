@@ -9,8 +9,8 @@ List **all** GitHub repos a user has contributed to **since the beginning of tim
 $ github-contribs AurelienLourot
 ✔ Fetched first day at GitHub: 2015-04-04.
 ⚠ Be patient. The whole process might take up to an hour... Consider using `--since` and/or `--until`.
-✔ Fetched all commits.
-34 repo(s) found:
+✔ Fetched all commits and PRs.
+35 repo(s) found:
 AurelienLourot/lsankidb
 reframejs/reframe
 dracula/gitk

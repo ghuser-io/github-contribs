@@ -37,7 +37,7 @@
   };
 
   const getContribs = async (user, joinDate, since, until, ora, console) => {
-    const htmlToRepos = html => {
+    const commitsHtmlToRepos = html => {
       const repos = new Set();
 
       const handler = new htmlparser.DefaultHandler((error, dom) => {});
@@ -57,6 +57,39 @@
                       const a = div[l].children[0].data;
                       if (!a.includes(' ')) {
                         repos.add(a);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      return repos;
+    };
+
+    const prsHtmlToRepos = html => {
+      const repos = new Set();
+
+      const handler = new htmlparser.DefaultHandler((error, dom) => {});
+      const parser = new htmlparser.Parser(handler);
+      parser.parseComplete(html);
+      for (let i = 0; i < handler.dom.length; ++i) {
+        if (handler.dom[i].type == 'tag' && handler.dom[i].name == 'div') {
+          const div1 = handler.dom[i].children;
+          for (let j = 0; j < div1.length; ++j) {
+            if (div1[j].type == 'tag' && div1[j].name == 'div') {
+              const div2 = div1[j].children;
+              for (let k = 0; k < div2.length; ++k) {
+                if (div2[k].type == 'tag' && div2[k].name == 'button') {
+                  const button = div2[k].children;
+                  for (let l = 0; l < button.length; ++l) {
+                    if (button[l].type == 'tag' && button[l].name == 'span') {
+                      const span = button[l].children[0].data.trim();
+                      if (span) {
+                        repos.add(span);
                       }
                     }
                   }
@@ -93,20 +126,32 @@
 
         return (async () => {
           const tooManyRequests = 429;
+          const fetchOptions = {
+            retryOn: [tooManyRequests],
+            retries: 300,
+          };
           const userCommits = await fetch(
-            `https://github.com/users/${user}/created_commits?from=${currDateStr}&to=${currDateStr}`, {
-              retryOn: [tooManyRequests],
-              retries: 300,
-            },
+            `https://github.com/users/${user}/created_commits?from=${currDateStr}&to=${currDateStr}`,
+            fetchOptions
           );
           const userCommitsHtml = await userCommits.text();
-          const repos = htmlToRepos(userCommitsHtml);
-          commitsSpinner.stop(); // temporary stop for logging
-          for (let repo of repos) {
-            console.log(`${currDateStr}: ${repo}`);
+          const userPRs = await fetch(
+            `https://github.com/users/${user}/created_pull_requests?from=${currDateStr}&to=${currDateStr}`,
+            fetchOptions
+          );
+          const userPRsHtml = await userPRs.text();
+          const commitsRepos = commitsHtmlToRepos(userCommitsHtml);
+          const prsRepos = prsHtmlToRepos(userPRsHtml);
+          progressSpinner.stop(); // temporary stop for logging
+          for (let repo of commitsRepos) {
+            console.log(`${currDateStr}: (commits) ${repo}`);
             result.add(repo);
           }
-          commitsSpinner.start(`Fetching all commits [${++numOfQueriedDays}/${numOfDaysToQuery}]`);
+          for (let repo of prsRepos) {
+            console.log(`${currDateStr}: (PRs)     ${repo}`);
+            result.add(repo);
+          }
+          progressSpinner.start(`Fetching all commits and PRs [${++numOfQueriedDays}/${numOfDaysToQuery}]`);
         })();
       };
     })();
@@ -121,9 +166,9 @@
     ora(warning).warn();
 
     const result = new Set();
-    const commitsSpinner = ora('Fetching all commits...').start();
+    const progressSpinner = ora('Fetching all commits and PRs...').start();
     await new promisePool(getContribsOnOneDay, 5).start();
-    commitsSpinner.succeed('Fetched all commits.');
+    progressSpinner.succeed('Fetched all commits and PRs.');
     return result;
   };
 
