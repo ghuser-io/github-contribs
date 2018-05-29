@@ -20,7 +20,7 @@ positional arguments:
 optional arguments:
   --quiet              do not show progress while querying GitHub, only the final result
   --verbose            show debugging information
-  --since YYYY-MM-DD   limit the results
+  --since YYYY-MM-DD   limit the results (default: first day at GitHub)
   --version            show program's version number and exit
   --help               show this help message and exit
 `, {
@@ -34,17 +34,17 @@ optional arguments:
 });
 
   if (cli.flags.quiet && cli.flags.verbose) {
-    console.error('Error: --quiet and --verbose are mutually exclusive.');
+    console.error('Error: --quiet and --verbose are mutually exclusive. See `github-contribs --help`.');
     process.exit(1);
   }
 
   if (cli.input.length < 1) {
-    console.error('Error: USER argument missing.');
+    console.error('Error: USER argument missing. See `github-contribs --help`.');
     process.exit(1);
   }
 
   if (cli.input.length > 1) {
-    console.error('Error: too many positional arguments.');
+    console.error('Error: too many positional arguments. See `github-contribs --help`.');
     process.exit(1);
   }
 
