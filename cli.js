@@ -6,7 +6,7 @@
   const meow = require('meow');
   const ora = require('ora');
 
-  const githubContribs = require('./');
+  const githubContribs = require('.');
 
   const cli = meow(`
 usage:
@@ -25,15 +25,15 @@ optional arguments:
   --version            show program's version number and exit
   --help               show this help message and exit
 `, {
-  boolean: [
-    'quiet',
-    'verbose',
-  ],
-  string: [
-    'since',
-    'until',
-  ],
-});
+    boolean: [
+      'quiet',
+      'verbose',
+    ],
+    string: [
+      'since',
+      'until',
+    ],
+  });
 
   if (cli.flags.quiet && cli.flags.verbose) {
     console.error('Error: --quiet and --verbose are mutually exclusive. See `github-contribs --help`.');
@@ -56,7 +56,7 @@ optional arguments:
   if (!cli.flags.quiet) {
     console.log(`${repos.size} repo(s) found:`);
   }
-  for (let repo of repos) {
+  for (const repo of repos) {
     console.log(repo);
   }
 

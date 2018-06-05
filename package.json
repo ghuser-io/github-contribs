@@ -42,6 +42,21 @@
     "xo": "*"
   },
   "xo": {
-    "esnext": true
+    "esnext": true,
+    "rules": {
+      "brace-style": "off",
+      "capitalized-comments": "off",
+      "comma-dangle": "off",
+      "indent": "off",
+      "max-depth": "off",
+      "max-params": "off",
+      "no-warning-comments": "off",
+      "no-unused-vars": "off",
+      "no-use-before-define": "off",
+      "padded-blocks": "off",
+      "spaced-comment": "off",
+      "unicorn/explicit-length-check": "off"
+    },
+    "space": true
   }
 }
