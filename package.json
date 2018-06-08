@@ -72,6 +72,6 @@
       ".js"
     ],
     "check-coverage": true,
-    "lines": 13
+    "lines": 82
   }
 }
