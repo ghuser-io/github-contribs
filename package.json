@@ -52,9 +52,10 @@
       "indent": "off",
       "max-depth": "off",
       "max-params": "off",
-      "no-warning-comments": "off",
+      "no-throw-literal": "off",
       "no-unused-vars": "off",
       "no-use-before-define": "off",
+      "no-warning-comments": "off",
       "padded-blocks": "off",
       "spaced-comment": "off",
       "unicorn/explicit-length-check": "off"

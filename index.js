@@ -30,6 +30,13 @@
 
     const userInfo = await fetch(`https://api.github.com/users/${user}`);
     const userInfoJson = await userInfo.json();
+    if (!userInfoJson.created_at) {
+      firstDaySpinner.stop();
+      throw {
+        _reason: 'userInfoJson.created_at is falsy',
+        userInfoJson,
+      };
+    }
 
     const result = stringToDate(userInfoJson.created_at);
     firstDaySpinner.succeed(`Fetched first day at GitHub: ${dateToString(result)}.`);
