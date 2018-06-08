@@ -1,2 +1,5 @@
+/.nyc_output/
+/coverage/
 /node_modules/
+/package-lock.json
 /yarn.lock
