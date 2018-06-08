@@ -2,7 +2,9 @@
 [![Coverage Status](https://codecov.io/gh/AurelienLourot/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/AurelienLourot/github-contribs)
 [![npm version](https://img.shields.io/npm/v/@ghuser/github-contribs.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
 
-# :octocat: github-contribs
+[<img src="https://rawgit.com/AurelienLourot/github-contribs/master/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/AurelienLourot/github-contribs)
+
+# github-contribs
 
 List **all** GitHub repos a user has contributed to **since the beginning of time**:
 
