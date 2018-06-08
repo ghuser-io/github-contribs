@@ -73,6 +73,6 @@
       ".js"
     ],
     "check-coverage": true,
-    "lines": 82
+    "lines": 81
   }
 }

@@ -33,7 +33,7 @@
     if (!userInfoJson.created_at) {
       firstDaySpinner.stop();
       throw {
-        _reason: 'userInfoJson.created_at is falsy',
+        _reason: `GitHub didn't answer 'created_at'.`,
         userInfoJson,
       };
     }
