@@ -17,7 +17,7 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "xo && nyc ava && nyc report --reporter=lcov"
+    "test": "xo && nyc ava"
   },
   "keywords": [
     "cli-app",
@@ -60,5 +60,18 @@
       "unicorn/explicit-length-check": "off"
     },
     "space": true
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "extension": [
+      ".js"
+    ],
+    "check-coverage": true,
+    "lines": 13
   }
 }
