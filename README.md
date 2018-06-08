@@ -2,7 +2,7 @@
 [![Coverage Status](https://codecov.io/gh/AurelienLourot/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/AurelienLourot/github-contribs)
 [![npm version](https://img.shields.io/npm/v/@ghuser/github-contribs.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
 
-# github-contribs
+# :octocat: github-contribs
 
 List **all** GitHub repos a user has contributed to **since the beginning of time**:
 
