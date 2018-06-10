@@ -26,9 +26,9 @@
   };
 
   const fetchRetry = url => {
-    const tooManyRequests = 429;
+    const tooManyRequests = [403, 429];
     return fetch(url, {
-      retryOn: [tooManyRequests],
+      retryOn: tooManyRequests,
       retries: 300,
     });
   };
