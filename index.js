@@ -25,15 +25,24 @@
     return result;
   };
 
+  const fetchRetry = url => {
+    const tooManyRequests = 429;
+    return fetch(url, {
+      retryOn: [tooManyRequests],
+      retries: 300,
+    });
+  };
+
   const getFirstDayAtGithub = async (user, ora) => {
     const firstDaySpinner = ora('Fetching first day at GitHub...').start();
 
-    const userInfo = await fetch(`https://api.github.com/users/${user}`);
+    const userInfo = await fetchRetry(`https://api.github.com/users/${user}`);
     const userInfoJson = await userInfo.json();
     if (!userInfoJson.created_at) {
       firstDaySpinner.stop();
       throw {
         _reason: `GitHub didn't answer 'created_at'.`,
+        userInfo,
         userInfoJson,
       };
     }
@@ -132,19 +141,12 @@
         currDate = prevDay(currDate);
 
         return (async () => {
-          const tooManyRequests = 429;
-          const fetchOptions = {
-            retryOn: [tooManyRequests],
-            retries: 300,
-          };
-          const userCommits = await fetch(
-            `https://github.com/users/${user}/created_commits?from=${currDateStr}&to=${currDateStr}`,
-            fetchOptions
+          const userCommits = await fetchRetry(
+            `https://github.com/users/${user}/created_commits?from=${currDateStr}&to=${currDateStr}`
           );
           const userCommitsHtml = await userCommits.text();
-          const userPRs = await fetch(
+          const userPRs = await fetchRetry(
             `https://github.com/users/${user}/created_pull_requests?from=${currDateStr}&to=${currDateStr}`,
-            fetchOptions
           );
           const userPRsHtml = await userPRs.text();
           const commitsRepos = commitsHtmlToRepos(userCommitsHtml);
