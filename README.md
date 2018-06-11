@@ -24,6 +24,8 @@ dracula/gitk
 ...
 ```
 
+⇒ [Advanced usage](https://github.com/AurelienLourot/github-contribs/tree/master/advanced.md)
+
 ## Installation
 
 ```bash

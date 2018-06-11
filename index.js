@@ -34,17 +34,27 @@
   };
 
   const getFirstDayAtGithub = async (user, ora) => {
+    let urlSuffix = '';
+    if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
+      console.log('GitHub API key found.');
+      urlSuffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
+    }
+
     const firstDaySpinner = ora('Fetching first day at GitHub...').start();
 
-    const userInfo = await fetchRetry(`https://api.github.com/users/${user}`);
-    const userInfoJson = await userInfo.json();
-    if (!userInfoJson.created_at) {
+    let error = false;
+    let userInfoJson;
+    try {
+      const userInfo = await fetchRetry(`https://api.github.com/users/${user}${urlSuffix}`);
+      userInfoJson = await userInfo.json();
+    } catch (_) {
+      // This error handling should be the least verbose possible in order not to leak the API key
+      // by just having the URL printed.
+      error = true;
+    }
+    if (error || !userInfoJson.created_at) {
       firstDaySpinner.stop();
-      throw {
-        _reason: `GitHub didn't answer 'created_at'.`,
-        userInfo,
-        userInfoJson,
-      };
+      throw new Error('Failed to fetch first day at GitHub.');
     }
 
     const result = stringToDate(userInfoJson.created_at);
