@@ -8,11 +8,11 @@ $ npm test
 
 ## Increase the version number
 
-In [package.json](package.json) to `7.8.9` in this example.
+In [package.json](../package.json) to `7.8.9` in this example.
 
 ## Extend the changelog
 
-In [README.md](README.md#changelog).
+In [README.md](../README.md#changelog).
 
 ## Generate the package to be published
 
