@@ -9,7 +9,8 @@
 List **all** GitHub repos a user has contributed to **since the beginning of time**:
 
 * not just the last few months,
-* not just the repos owned by the user or their organisations.
+* not just the repos owned by the user or their organisations,
+* all repos a user has pushed to.
 
 ```bash
 $ github-contribs AurelienLourot
