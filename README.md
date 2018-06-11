@@ -88,3 +88,9 @@ when it breaks.
 
 **0.0.1** (2018-05-29):
   * Initial version.
+
+## Similar projects
+
+* [GitHub-contributions](https://github.com/faheel/GitHub-contributions): uses a different
+  technique. It fetches all the user's pull requests from the official API. This is clever but will
+  miss the repos to which the user has pushed directly without pull request.
