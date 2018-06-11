@@ -1,4 +1,7 @@
+/.nyc_output/
 /.travis.yml
+/coverage/
 /maintain.md
 /test.js
+/thirdparty/
 /yarn.lock
