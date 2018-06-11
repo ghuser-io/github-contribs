@@ -24,7 +24,7 @@ dracula/gitk
 ...
 ```
 
-⇒ [Advanced usage](https://github.com/AurelienLourot/github-contribs/tree/master/advanced.md)
+⇒ [Advanced usage](https://github.com/AurelienLourot/github-contribs/tree/master/docs/advanced.md)
 
 ## Installation
 
