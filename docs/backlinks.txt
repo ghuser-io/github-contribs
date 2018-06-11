@@ -1,3 +1,4 @@
 https://www.reddit.com/r/github/comments/8q99au/commandline_tool_to_list_all_repos_a_user_has/
 https://stackoverflow.com/a/50798815/1855917
 https://www.quora.com/How-do-I-find-the-contributions-of-a-user-on-GitHub/answer/Aurélien-Lourot
+https://news.ycombinator.com/item?id=17287885
