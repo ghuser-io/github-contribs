@@ -6,3 +6,7 @@ tar xvzf octicons.tgz
 rm octicons.tgz
 mv package/build/svg/ octicons/
 rm -rf package/
+
+pushd badges/
+./download.sh
+popd

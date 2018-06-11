@@ -72,3 +72,12 @@ $ sudo npm install -g @ghuser/github-contribs
 ## Add release notes
 
 to [https://github.com/AurelienLourot/github-contribs/tags](https://github.com/AurelienLourot/github-contribs/tags)
+
+## Update the cache of flaky badges
+
+```bash
+$ cd thirdparty/badges/
+$ ./download.sh # and check that the badges look good
+$ git commit -am "Updated flaky badges."
+$ git push
+```
