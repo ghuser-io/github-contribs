@@ -10,6 +10,10 @@ $ npm test
 
 In [package.json](package.json) to `7.8.9` in this example.
 
+## Extend the changelog
+
+In [README.md](README.md#changelog).
+
 ## Generate the package to be published
 
 ```bash

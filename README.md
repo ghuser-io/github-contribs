@@ -80,6 +80,9 @@ when it breaks.
 
 ## Changelog
 
+**1.0.0** (2018-06-11):
+  * Support for passing a GitHub API key.
+
 **0.0.2** (2018-05-29):
   * Cosmetic improvements to the [npm page](https://www.npmjs.com/package/@ghuser/github-contribs).
 
