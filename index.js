@@ -33,10 +33,16 @@
     return date.toISOString().substring(0, 10);
   };
 
+  // See https://stackoverflow.com/a/25114400/1855917
+  const prevDay = date => {
+    return new Date(date.getTime() - (24 * 60 * 60 * 1000));
+  };
+
   module.exports = {
     fetch: fetchContribs,
     stringToDate,
-    dateToString
+    dateToString,
+    prevDay
   };
 
   const fetchRetry = url => {
@@ -203,11 +209,6 @@
     await new PromisePool(getContribsOnOneDay, 5).start();
     progressSpinner.succeed('Fetched all commits and PRs.');
     return result;
-  };
-
-  // See https://stackoverflow.com/a/25114400/1855917
-  const prevDay = date => {
-    return new Date(date.getTime() - (24 * 60 * 60 * 1000));
   };
 
 })();

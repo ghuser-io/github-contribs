@@ -52,4 +52,8 @@ console.log(date); // 2018-05-11T00:00:00.000Z
 
 const dateString = githubContribs.dateToString(date);
 console.log(dateString); // 2018-05-11
+
+const dayBefore = githubContribs.prevDay(date); // Date() object
+const dayBeforeString = githubContribs.dateToString(dayBefore);
+console.log(dayBeforeString); // 2018-05-10
 ```

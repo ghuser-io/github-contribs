@@ -80,8 +80,11 @@ when it breaks.
 
 ## Changelog
 
+**2.1.0** (2018-06-25):
+  * Exported helper function `prevDay()`.
+
 **2.0.0** (2018-06-25):
-  * Exported some helper functions.
+  * Exported helper functions `stringToDate()` and `dateToString()`.
 
 **1.0.0** (2018-06-11):
   * Support for passing a GitHub API key.
