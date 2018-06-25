@@ -1,5 +1,7 @@
 # Advanced usage
 
+## Passing a GitHub API key
+
 Although we're not using [GitHub's public API](https://developer.github.com/v3/) for most operations
 (see [FAQ](README.md#how-does-it-work)), we are still using it a bit, e.g. for fetching the day at
 which the user has joined GitHub. So it's still worth
@@ -18,4 +20,25 @@ AurelienLourot/lsankidb
 reframejs/reframe
 dracula/gitk
 ...
+```
+
+## Using in a JavaScript project
+
+```js
+(async () => {
+
+  const githubContribs = require('@ghuser/github-contribs');
+  const ora = require('ora');
+
+  const repos = await githubContribs(
+    'AurelienLourot', // username
+    '2018-06-25',     // --since
+    null,             // --until
+    ora
+  );
+  for (const repo of repos) {
+    console.log(repo);
+  }
+
+})();
 ```
