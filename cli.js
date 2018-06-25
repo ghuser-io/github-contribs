@@ -51,8 +51,8 @@ optional arguments:
   }
 
   const user = cli.input[0];
-  const repos = await githubContribs(user, cli.flags.since, cli.flags.until,
-                                     !cli.flags.quiet && ora, cli.flags.verbose && console);
+  const repos = await githubContribs.fetch(user, cli.flags.since, cli.flags.until,
+                                           !cli.flags.quiet && ora, cli.flags.verbose && console);
   if (!cli.flags.quiet) {
     console.log(`${repos.size} repo(s) found:`);
   }

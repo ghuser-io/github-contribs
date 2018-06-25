@@ -28,7 +28,7 @@ test('fetches commits and PRs', async t => {
     };
   };
 
-  const result = await m('AurelienLourot', '2017-08-26', '2017-08-28', ora, console);
+  const result = await m.fetch('AurelienLourot', '2017-08-26', '2017-08-28', ora, console);
   t.is(result.size, 2);
   t.true(result.has('AurelienLourot/mybeir.ut'));
   t.true(result.has('tt-gf/ant-ivy'));

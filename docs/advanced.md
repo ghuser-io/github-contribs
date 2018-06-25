@@ -30,7 +30,7 @@ dracula/gitk
   const githubContribs = require('@ghuser/github-contribs');
   const ora = require('ora');
 
-  const repos = await githubContribs(
+  const repos = await githubContribs.fetch(
     'AurelienLourot', // username
     '2018-06-25',     // --since
     null,             // --until
@@ -41,4 +41,15 @@ dracula/gitk
   }
 
 })();
+```
+
+### Helper functions
+
+```js
+const githubContribs = require('@ghuser/github-contribs');
+const date = githubContribs.stringToDate('2018-05-11T12:26:47Z'); // Date() object
+console.log(date); // 2018-05-11T00:00:00.000Z
+
+const dateString = githubContribs.dateToString(date);
+console.log(dateString); // 2018-05-11
 ```

@@ -29,6 +29,7 @@ $ rm ghuser-github-contribs-7.8.9.tgz
 ## Install the package locally
 
 ```bash
+$ sudo npm uninstall -g @ghuser/github-contribs
 $ sudo npm install . -g
 ```
 
@@ -36,7 +37,7 @@ and test it briefly, e.g.
 
 ```bash
 $ github-contribs --version
-$ github-contribs --since 2018-05-29 AurelienLourot
+$ github-contribs --since 2018-06-20 AurelienLourot
 ```
 
 ## Commit your changes, create a git tag and push

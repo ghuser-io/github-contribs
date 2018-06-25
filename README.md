@@ -80,6 +80,9 @@ when it breaks.
 
 ## Changelog
 
+**2.0.0** (2018-06-25):
+  * Exported some helper functions.
+
 **1.0.0** (2018-06-11):
   * Support for passing a GitHub API key.
 

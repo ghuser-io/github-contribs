@@ -7,7 +7,7 @@
   const htmlparser = require('htmlparser');
   const moment = require('moment');
 
-  module.exports = async (user, since, until, ora, console) => {
+  const fetchContribs = async (user, since, until, ora, console) => {
     ora = ora || (() => {
       return {
         start() { return this; },
@@ -23,6 +23,20 @@
     const joinDate = await getFirstDayAtGithub(user, ora);
     const result = await getContribs(user, joinDate, since, until, ora, console);
     return result;
+  };
+
+  // See https://stackoverflow.com/a/28431880/1855917
+  const stringToDate = string => {
+    return new Date(`${string.substring(0, 10)}T00:00:00Z`);
+  };
+  const dateToString = date => {
+    return date.toISOString().substring(0, 10);
+  };
+
+  module.exports = {
+    fetch: fetchContribs,
+    stringToDate,
+    dateToString
   };
 
   const fetchRetry = url => {
@@ -189,14 +203,6 @@
     await new PromisePool(getContribsOnOneDay, 5).start();
     progressSpinner.succeed('Fetched all commits and PRs.');
     return result;
-  };
-
-  // See https://stackoverflow.com/a/28431880/1855917
-  const stringToDate = string => {
-    return new Date(`${string.substring(0, 10)}T00:00:00Z`);
-  };
-  const dateToString = date => {
-    return date.toISOString().substring(0, 10);
   };
 
   // See https://stackoverflow.com/a/25114400/1855917
