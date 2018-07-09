@@ -4,3 +4,4 @@
 * https://stackoverflow.com/a/50812943/1855917
 * https://www.quora.com/How-do-I-find-the-contributions-of-a-user-on-GitHub/answer/Aurélien-Lourot
 * https://news.ycombinator.com/item?id=17287885
+* https://github.com/AurelienLourot/ghuser.io
