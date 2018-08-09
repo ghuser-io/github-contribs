@@ -14,7 +14,7 @@ $ github-contribs AurelienLourot
 GitHub API key found.
 ✔ Fetched first day at GitHub: 2015-04-04.
 ⚠ Be patient. The whole process might take up to an hour... Consider using --since and/or --until
-✔ Fetched all commits and PRs.
+✔ Fetched all commits and PRs. Consider using --issues to fetch issues as well.
 35 repo(s) found:
 AurelienLourot/lsankidb
 reframejs/reframe

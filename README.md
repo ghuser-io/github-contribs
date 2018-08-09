@@ -16,7 +16,7 @@ List **all** GitHub repos a user has contributed to **since the beginning of tim
 $ github-contribs AurelienLourot
 ✔ Fetched first day at GitHub: 2015-04-04.
 ⚠ Be patient. The whole process might take up to an hour... Consider using --since and/or --until
-✔ Fetched all commits and PRs.
+✔ Fetched all commits and PRs. Consider using --issues to fetch issues as well.
 35 repo(s) found:
 AurelienLourot/lsankidb
 reframejs/reframe
@@ -65,8 +65,25 @@ Instead we noticed that the "Contribution Activity" on the
 * https://github.com/users/AurelienLourot/created_repositories?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_pull_requests?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_pull_request_reviews?from=2018-05-17&to=2018-05-17
+* https://github.com/users/AurelienLourot/created_issues?from=2018-07-10&to=2018-07-10
 
 So we're doing the same :)
+
+> **NOTE**: it seems like `created_issues` URLs don't deliver "hot issues" (issues which received
+> more comments than others):
+>
+> ```bash
+> $ curl -s "https://github.com/users/AurelienLourot/created_issues?from=2015-09-23&to=2015-09-23"
+> <div class="profile-rollup-content">
+> </div>
+> ```
+>
+> To get these, we also query the profile itself:
+>
+> ```bash
+> $ curl -s "https://github.com/AurelienLourot?from=2015-09-23" | grep issues/
+>         <a class="text-gray-dark" href="/jfrog/build-info/issues/60">Publish properties aren&#39;t used by build-info-extractor-gradle?</a>
+> ```
 
 ### Why is it so slow?
 
@@ -75,10 +92,16 @@ API, we can't use a token to raise the limit.
 
 ### Isn't it likely to break?
 
-Yes, it is since that interface isn't public. We're monitoring it and will react as fast as we can
-when it breaks.
+Yes, it is since that interface isn't public. We're monitoring it<sup>[1](#footnote1)</sup> and will
+react as fast as we can when it breaks.
+
+<a name="footnote1"><sup>1</sup></a> [ghuser.io](https://github.com/AurelienLourot/ghuser.io) runs
+this tool every day.<br/>
 
 ## Changelog
+
+**2.2.0** (2018-08-09):
+  * [#1](https://github.com/AurelienLourot/github-contribs/issues/1) - Added `--issues` flag.
 
 **2.1.0** (2018-06-25):
   * Exported helper function `prevDay()`.

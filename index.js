@@ -7,7 +7,7 @@
   const htmlparser = require('htmlparser');
   const moment = require('moment');
 
-  const fetchContribs = async (user, since, until, ora, console) => {
+  const fetchContribs = async (user, since, until, ora, console, alsoIssues) => {
     ora = ora || (() => {
       return {
         start() { return this; },
@@ -21,7 +21,7 @@
     };
 
     const joinDate = await getFirstDayAtGithub(user, ora);
-    const result = await getContribs(user, joinDate, since, until, ora, console);
+    const result = await getContribs(user, joinDate, since, until, ora, console, alsoIssues);
     return result;
   };
 
@@ -82,7 +82,7 @@
     return result;
   };
 
-  const getContribs = async (user, joinDate, since, until, ora, console) => {
+  const getContribs = async (user, joinDate, since, until, ora, console, alsoIssues) => {
     const commitsHtmlToRepos = html => {
       const repos = new Set();
 
@@ -116,7 +116,7 @@
       return repos;
     };
 
-    const prsHtmlToRepos = html => {
+    const issuesHtmlToRepos = html => {
       const repos = new Set();
 
       const handler = new htmlparser.DefaultHandler((error, dom) => {});
@@ -149,6 +149,39 @@
       return repos;
     };
 
+    const hotIssuesHtmlToRepos = html => {
+      const repos = new Set();
+
+      const regex = /<a.*href="\/(.*)\/(.*)\/issues\//g;
+      let linkToIssue;
+      while ((linkToIssue = regex.exec(html))) {
+        const owner = linkToIssue[1];
+        const name = linkToIssue[2];
+        repos.add(`${owner}/${name}`);
+      }
+
+      return repos;
+    };
+
+    const progressMsg = (isDone, alsoIssues, numOfQueriedDays, numOfDaysToQuery) => {
+      let result = (isDone && 'Fetched') || 'Fetching';
+      result += ' all commits';
+      result += (alsoIssues && ', PRs and issues') || ' and PRs';
+
+      if (isDone) {
+        result += '.';
+      } else if (numOfQueriedDays && numOfDaysToQuery) {
+        result += ` [${numOfQueriedDays}/${numOfDaysToQuery}]`;
+      } else {
+        result += '...';
+      }
+
+      if (!alsoIssues) {
+        result += ' Consider using --issues to fetch issues as well.';
+      }
+      return result;
+    };
+
     let oldestDate = joinDate;
     if (since) {
       oldestDate = new Date(Math.max(oldestDate, stringToDate(since)));
@@ -175,22 +208,50 @@
             `https://github.com/users/${user}/created_commits?from=${currDateStr}&to=${currDateStr}`
           );
           const userCommitsHtml = await userCommits.text();
+          const commitsRepos = commitsHtmlToRepos(userCommitsHtml);
+
           const userPRs = await fetchRetry(
             `https://github.com/users/${user}/created_pull_requests?from=${currDateStr}&to=${currDateStr}`,
           );
           const userPRsHtml = await userPRs.text();
-          const commitsRepos = commitsHtmlToRepos(userCommitsHtml);
-          const prsRepos = prsHtmlToRepos(userPRsHtml);
+          const prsRepos = issuesHtmlToRepos(userPRsHtml);
+
+          let issuesRepos = [];
+          let hotIssuesRepos = [];
+          if (alsoIssues) {
+            const userIssues = await fetchRetry(
+              `https://github.com/users/${user}/created_issues?from=${currDateStr}&to=${currDateStr}`,
+            );
+            const userIssuesHtml = await userIssues.text();
+            issuesRepos = issuesHtmlToRepos(userIssuesHtml);
+
+            const userHotIssues = await fetchRetry(
+              `https://github.com/${user}?from=${currDateStr}`,
+            );
+            const userHotIssuesHtml = await userHotIssues.text();
+            hotIssuesRepos = hotIssuesHtmlToRepos(userHotIssuesHtml);
+          }
+
           progressSpinner.stop(); // temporary stop for logging
           for (const repo of commitsRepos) {
-            console.log(`${currDateStr}: (commits) ${repo}`);
+            console.log(`${currDateStr}: (commits)    ${repo}`);
             result.add(repo);
           }
           for (const repo of prsRepos) {
-            console.log(`${currDateStr}: (PRs)     ${repo}`);
+            console.log(`${currDateStr}: (PRs)        ${repo}`);
             result.add(repo);
           }
-          progressSpinner.start(`Fetching all commits and PRs [${++numOfQueriedDays}/${numOfDaysToQuery}]`);
+          for (const repo of issuesRepos) {
+            console.log(`${currDateStr}: (issues)     ${repo}`);
+            result.add(repo);
+          }
+          for (const repo of hotIssuesRepos) {
+            console.log(`${currDateStr}: (hot issues) ${repo}`);
+            result.add(repo);
+          }
+          progressSpinner.start(
+            progressMsg(false, alsoIssues, ++numOfQueriedDays, numOfDaysToQuery)
+          );
         })();
       };
     })();
@@ -205,9 +266,9 @@
     ora(warning).warn();
 
     const result = new Set();
-    const progressSpinner = ora('Fetching all commits and PRs...').start();
+    const progressSpinner = ora(progressMsg(false, alsoIssues)).start();
     await new PromisePool(getContribsOnOneDay, 5).start();
-    progressSpinner.succeed('Fetched all commits and PRs.');
+    progressSpinner.succeed(progressMsg(true, alsoIssues));
     return result;
   };
 
