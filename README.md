@@ -104,6 +104,13 @@ react as fast as we can when it breaks.
 <a name="footnote1"><sup>1</sup></a> [ghuser.io](https://github.com/AurelienLourot/ghuser.io) runs
 this tool every day.<br/>
 
+### `github-contribs` missed some of my commits. Why?
+
+`github-contribs` can only discover commits considered as
+[GitHub contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/#commits),
+i.e. commits that would also appear in the activity section of your GitHub profile. For example it
+doesn't discover commits is forks.
+
 ## Changelog
 
 **2.2.0** (2018-08-09):
