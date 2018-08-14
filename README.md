@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/AurelienLourot/github-contribs.svg?branch=master)](https://travis-ci.org/AurelienLourot/github-contribs)
 [![Coverage Status](https://codecov.io/gh/AurelienLourot/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/AurelienLourot/github-contribs)
 [![npm version](https://rawgit.com/AurelienLourot/github-contribs/master/thirdparty/badges/npm.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
 [<img src="https://rawgit.com/AurelienLourot/github-contribs/master/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/AurelienLourot/github-contribs)
 
@@ -50,8 +50,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/11795312?v=4" width="100px;"/><br /><sub><b>Aurelien Lourot</b></sub>](https://ghuser.io/AurelienLourot)<br />[💬](#question-AurelienLourot "Answering Questions") [💻](https://github.com/AurelienLourot/github-contribs/commits?author=AurelienLourot "Code") [📖](https://github.com/AurelienLourot/github-contribs/commits?author=AurelienLourot "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/15092?v=4" width="100px;"/><br /><sub><b>John Vandenberg</b></sub>](https://jayvdb.github.io/)<br />[🐛](https://github.com/AurelienLourot/github-contribs/issues?q=author%3Ajayvdb "Bug reports") [🤔](#ideas-jayvdb "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/1057635?v=4" width="100px;"/><br /><sub><b>Jeaye Wilkerson</b></sub>](https://jeaye.com)<br />[🐛](https://github.com/AurelienLourot/github-contribs/issues?q=author%3Ajeaye "Bug reports") |
-| :---: | :---: | :---: |
+| [<img src="https://avatars1.githubusercontent.com/u/11795312?v=4" width="100px;"/><br /><sub><b>Aurelien Lourot</b></sub>](https://ghuser.io/AurelienLourot)<br />[💬](#question-AurelienLourot "Answering Questions") [💻](https://github.com/AurelienLourot/github-contribs/commits?author=AurelienLourot "Code") [📖](https://github.com/AurelienLourot/github-contribs/commits?author=AurelienLourot "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/15092?v=4" width="100px;"/><br /><sub><b>John Vandenberg</b></sub>](https://jayvdb.github.io/)<br />[🐛](https://github.com/AurelienLourot/github-contribs/issues?q=author%3Ajayvdb "Bug reports") [🤔](#ideas-jayvdb "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/1057635?v=4" width="100px;"/><br /><sub><b>Jeaye Wilkerson</b></sub>](https://jeaye.com)<br />[🐛](https://github.com/AurelienLourot/github-contribs/issues?q=author%3Ajeaye "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/18241007?v=4" width="100px;"/><br /><sub><b>Hagar Shilo</b></sub>](http://mandala.hagarsh.com)<br />[🤔](#ideas-strayblues "Ideas, Planning, & Feedback") |
+| :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
