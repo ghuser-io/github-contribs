@@ -109,7 +109,7 @@ this tool every day.<br/>
 `github-contribs` can only discover commits considered as
 [GitHub contributions](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/#commits),
 i.e. commits that would also appear in the activity section of your GitHub profile. For example it
-doesn't discover commits is forks.
+doesn't discover commits in forks.
 
 ## Changelog
 
