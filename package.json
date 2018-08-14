@@ -38,6 +38,7 @@
     "ora": "^2.0.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "^5.4.0",
     "ava": "*",
     "codecov": "^3.0.2",
     "nyc": "^12.0.2",

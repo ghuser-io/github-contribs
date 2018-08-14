@@ -1,0 +1,43 @@
+{
+  "projectName": "github-contribs",
+  "projectOwner": "AurelienLourot",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "AurelienLourot",
+      "name": "Aurelien Lourot",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11795312?v=4",
+      "profile": "https://ghuser.io/AurelienLourot",
+      "contributions": [
+        "question",
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "jayvdb",
+      "name": "John Vandenberg",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15092?v=4",
+      "profile": "https://jayvdb.github.io/",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
+    },
+    {
+      "login": "jeaye",
+      "name": "Jeaye Wilkerson",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1057635?v=4",
+      "profile": "https://jeaye.com",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ]
+}
