@@ -99,6 +99,10 @@ So we're doing the same :)
 We hit a [rate limit](https://en.wikipedia.org/wiki/Rate_limiting). And since it's not an official
 API, we can't use a token to raise the limit.
 
+> **NOTE**: the rate limit seems to be 40 requests / minute / endpoint / IP. Thus even if crawling a
+> single user takes about 3 hours on a single machine, crawling many users in parallel on that same
+> machine should still take about 3 hours.
+
 ### Isn't it likely to break?
 
 Yes, it is since that interface isn't public. We're monitoring it<sup>[1](#footnote1)</sup> and will
