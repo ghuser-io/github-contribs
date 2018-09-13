@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/ghuser-io/github-contribs.svg?branch=master)](https://travis-ci.org/ghuser-io/github-contribs)
-[![Coverage Status](https://codecov.io/gh/AurelienLourot/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/AurelienLourot/github-contribs)
+[![Coverage Status](https://codecov.io/gh/ghuser-io/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/ghuser-io/github-contribs)
 [![npm version](https://rawgit.com/ghuser-io/github-contribs/master/thirdparty/badges/npm.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
