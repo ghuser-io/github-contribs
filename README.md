@@ -108,7 +108,7 @@ API, we can't use a token to raise the limit.
 Yes, it is since that interface isn't public. We're monitoring it<sup>[1](#footnote1)</sup> and will
 react as fast as we can when it breaks.
 
-<a name="footnote1"><sup>1</sup></a> [ghuser.io](https://github.com/AurelienLourot/ghuser.io) runs
+<a name="footnote1"><sup>1</sup></a> [ghuser.io](https://github.com/ghuser-io/ghuser.io) runs
 this tool every day.<br/>
 
 ### `github-contribs` missed some of my commits. Why?
