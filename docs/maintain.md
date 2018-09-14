@@ -37,7 +37,7 @@ and test it briefly, e.g.
 
 ```bash
 $ github-contribs --version
-$ github-contribs --since 2018-06-20 AurelienLourot
+$ github-contribs --since 2018-09-14 AurelienLourot
 ```
 
 ## Commit your changes, create a git tag and push

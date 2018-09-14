@@ -1,6 +1,6 @@
 {
   "name": "@ghuser/github-contribs",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "List all GitHub repos a user has contributed to since the beginning of time.",
   "license": "Unlicense",
   "repository": {
@@ -73,6 +73,6 @@
       ".js"
     ],
     "check-coverage": true,
-    "lines": 84
+    "lines": 83
   }
 }

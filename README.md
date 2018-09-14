@@ -120,6 +120,9 @@ doesn't discover commits in forks.
 
 ## Changelog
 
+**2.2.1** (2018-09-15):
+  * Documentation improvements.
+
 **2.2.0** (2018-08-09):
   * [#1](https://github.com/ghuser-io/github-contribs/issues/1) - Added `--issues` flag.
 
