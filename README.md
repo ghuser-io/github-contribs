@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/ghuser-io/github-contribs.svg?branch=master)](https://travis-ci.org/ghuser-io/github-contribs)
 [![Coverage Status](https://codecov.io/gh/ghuser-io/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/ghuser-io/github-contribs)
-[![npm version](https://rawgit.com/ghuser-io/github-contribs/master/thirdparty/badges/npm.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
+[![npm version](https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@b301e71d69531b0edf1befd1f865a70ced557014/thirdparty/badges/npm.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
-[<img src="https://rawgit.com/ghuser-io/github-contribs/master/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/ghuser-io/github-contribs)
+[<img src="https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@b301e71d69531b0edf1befd1f865a70ced557014/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/ghuser-io/github-contribs)
 
 # github-contribs
 

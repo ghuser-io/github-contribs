@@ -84,5 +84,7 @@ to [https://github.com/ghuser-io/github-contribs/tags](https://github.com/ghuser
 $ cd thirdparty/badges/
 $ ./download.sh # and check that the badges look good
 $ git commit -am "Updated flaky badges."
+# update the link to jsdeliver.net in ../README.md
+$ git commit -am "Updated flaky badges."
 $ git push
 ```
