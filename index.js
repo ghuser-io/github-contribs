@@ -149,10 +149,10 @@
       return repos;
     };
 
-    const hotIssuesHtmlToRepos = html => {
+    const bigHtmlToRepos = (html, type) => { // type: 'issues' or 'pulls'
       const repos = new Set();
 
-      const regex = /<a.*href="\/(.*)\/(.*)\/issues\//g;
+      const regex = new RegExp(`<a.*href="/(.*)/(.*)/${type}/`, 'g');
       let linkToIssue;
       while ((linkToIssue = regex.exec(html))) {
         const owner = linkToIssue[1];
@@ -210,11 +210,11 @@
           const userCommitsHtml = await userCommits.text();
           const commitsRepos = commitsHtmlToRepos(userCommitsHtml);
 
-          const userPRs = await fetchRetry(
-            `https://github.com/users/${user}/created_pull_requests?from=${currDateStr}&to=${currDateStr}`,
+          const userPRsAndHotIssues = await fetchRetry(
+              `https://github.com/${user}?from=${currDateStr}`,
           );
-          const userPRsHtml = await userPRs.text();
-          const prsRepos = issuesHtmlToRepos(userPRsHtml);
+          const userPRsAndHotIssuesHtml = await userPRsAndHotIssues.text();
+          const prsRepos = bigHtmlToRepos(userPRsAndHotIssuesHtml, 'pull');
 
           let issuesRepos = [];
           let hotIssuesRepos = [];
@@ -225,11 +225,7 @@
             const userIssuesHtml = await userIssues.text();
             issuesRepos = issuesHtmlToRepos(userIssuesHtml);
 
-            const userHotIssues = await fetchRetry(
-              `https://github.com/${user}?from=${currDateStr}`,
-            );
-            const userHotIssuesHtml = await userHotIssues.text();
-            hotIssuesRepos = hotIssuesHtmlToRepos(userHotIssuesHtml);
+            hotIssuesRepos = bigHtmlToRepos(userPRsAndHotIssuesHtml, 'issues');
           }
 
           progressSpinner.stop(); // temporary stop for logging

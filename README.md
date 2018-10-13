@@ -72,7 +72,6 @@ Instead we noticed that the "Contribution Activity" on the
 
 * https://github.com/users/AurelienLourot/created_commits?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_repositories?from=2018-05-17&to=2018-05-17
-* https://github.com/users/AurelienLourot/created_pull_requests?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_pull_request_reviews?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_issues?from=2018-07-10&to=2018-07-10
 
@@ -119,6 +118,10 @@ i.e. commits that would also appear in the activity section of your GitHub profi
 doesn't discover commits in forks.
 
 ## Changelog
+
+**2.2.2** (2018-10-13):
+  * [ghuser-io/ghuser.io#172](https://github.com/ghuser-io/ghuser.io/issues/172) Fix after GitHub's
+    interface has changed. The `created_pull_requests` "endpoint" is gone.
 
 **2.2.1** (2018-09-15):
   * Documentation improvements.
