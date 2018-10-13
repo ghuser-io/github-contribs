@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/ghuser-io/github-contribs.svg?branch=master)](https://travis-ci.org/ghuser-io/github-contribs)
 [![Coverage Status](https://codecov.io/gh/ghuser-io/github-contribs/branch/master/graph/badge.svg)](https://codecov.io/gh/ghuser-io/github-contribs)
 [![npm version](https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@b301e71d69531b0edf1befd1f865a70ced557014/thirdparty/badges/npm.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
 [<img src="https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@b301e71d69531b0edf1befd1f865a70ced557014/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/ghuser-io/github-contribs)
 
@@ -50,8 +50,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/11795312?v=4" width="100px;"/><br /><sub><b>Aurelien Lourot</b></sub>](https://ghuser.io/AurelienLourot)<br />[💬](#question-AurelienLourot "Answering Questions") [💻](https://github.com/ghuser-io/github-contribs/commits?author=AurelienLourot "Code") [📖](https://github.com/ghuser-io/github-contribs/commits?author=AurelienLourot "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/15092?v=4" width="100px;"/><br /><sub><b>John Vandenberg</b></sub>](https://jayvdb.github.io/)<br />[🐛](https://github.com/ghuser-io/github-contribs/issues?q=author%3Ajayvdb "Bug reports") [🤔](#ideas-jayvdb "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/1057635?v=4" width="100px;"/><br /><sub><b>Jeaye Wilkerson</b></sub>](https://jeaye.com)<br />[🐛](https://github.com/ghuser-io/github-contribs/issues?q=author%3Ajeaye "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/18241007?v=4" width="100px;"/><br /><sub><b>Hagar Shilo</b></sub>](http://mandala.hagarsh.com)<br />[🤔](#ideas-strayblues "Ideas, Planning, & Feedback") |
-| :---: | :---: | :---: | :---: |
+| [<img src="https://avatars1.githubusercontent.com/u/11795312?v=4" width="100px;"/><br /><sub><b>Aurelien Lourot</b></sub>](https://ghuser.io/AurelienLourot)<br />[💬](#question-AurelienLourot "Answering Questions") [💻](https://github.com/ghuser-io/github-contribs/commits?author=AurelienLourot "Code") [📖](https://github.com/ghuser-io/github-contribs/commits?author=AurelienLourot "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/15092?v=4" width="100px;"/><br /><sub><b>John Vandenberg</b></sub>](https://jayvdb.github.io/)<br />[🐛](https://github.com/ghuser-io/github-contribs/issues?q=author%3Ajayvdb "Bug reports") [🤔](#ideas-jayvdb "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/1057635?v=4" width="100px;"/><br /><sub><b>Jeaye Wilkerson</b></sub>](https://jeaye.com)<br />[🐛](https://github.com/ghuser-io/github-contribs/issues?q=author%3Ajeaye "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/18241007?v=4" width="100px;"/><br /><sub><b>Hagar Shilo</b></sub>](http://mandala.hagarsh.com)<br />[🤔](#ideas-strayblues "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/1005638?v=4" width="100px;"/><br /><sub><b>Romuald Brillout</b></sub>](https://twitter.com/brillout)<br />[🤔](#ideas-brillout "Ideas, Planning, & Feedback") |
+| :---: | :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
@@ -77,21 +77,31 @@ Instead we noticed that the "Contribution Activity" on the
 
 So we're doing the same :)
 
-> **NOTE**: it seems like `created_issues` URLs don't deliver "hot issues" (issues which received
-> more comments than others):
+> **NOTES**:
 >
-> ```bash
-> $ curl -s "https://github.com/users/AurelienLourot/created_issues?from=2015-09-23&to=2015-09-23"
-> <div class="profile-rollup-content">
-> </div>
-> ```
+> * It seems like `created_issues` URLs don't deliver "hot issues" (issues which received
+>   more comments than others):
 >
-> To get these, we also query the profile itself:
+>   ```bash
+>   $ curl -s "https://github.com/users/AurelienLourot/created_issues?from=2015-09-23&to=2015-09-23"
+>   <div class="profile-rollup-content">
+>   </div>
+>   ```
 >
-> ```bash
-> $ curl -s "https://github.com/AurelienLourot?from=2015-09-23" | grep issues/
->         <a class="text-gray-dark" href="/jfrog/build-info/issues/60">Publish properties aren&#39;t used by build-info-extractor-gradle?</a>
-> ```
+>   To get these, we also query the profile itself:
+>
+>   ```bash
+>   $ curl -s "https://github.com/AurelienLourot?from=2015-09-23" | grep issues/
+>           <a class="text-gray-dark" href="/jfrog/build-info/issues/60">Publish properties aren&#39;t used by build-info-extractor-gradle?</a>
+>   ```
+>
+> * In the past we used to get the pull requests from a `created_pull_requests` URL but this got
+>   removed. We now get the pull requests from the profile itself as well:
+>
+>   ```bash
+>   $ curl -s "https://github.com/AurelienLourot?from=2017-08-28" | grep pull/
+>               <a href="/tt-gf/ant-ivy/pull/2" class="content-title no-underline">
+>   ```
 
 ### Why is it so slow?
 
