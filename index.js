@@ -83,39 +83,6 @@
   };
 
   const getContribs = async (user, joinDate, since, until, ora, console, alsoIssues) => {
-    const commitsHtmlToRepos = html => {
-      const repos = new Set();
-
-      const handler = new htmlparser.DefaultHandler((error, dom) => {});
-      const parser = new htmlparser.Parser(handler);
-      parser.parseComplete(html);
-      for (let i = 0; i < handler.dom.length; ++i) {
-        if (handler.dom[i].type === 'tag' && handler.dom[i].name === 'ul') {
-          const ul = handler.dom[i].children;
-          for (let j = 0; j < ul.length; ++j) {
-            if (ul[j].type === 'tag' && ul[j].name === 'li') {
-              const li = ul[j].children;
-              for (let k = 0; k < li.length; ++k) {
-                if (li[k].type === 'tag' && li[k].name === 'div') {
-                  const div = li[k].children;
-                  for (let l = 0; l < div.length; ++l) {
-                    if (div[l].type === 'tag' && div[l].name === 'a') {
-                      const a = div[l].children[0].data;
-                      if (!a.includes(' ')) {
-                        repos.add(a);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-
-      return repos;
-    };
-
     const issuesHtmlToRepos = html => {
       const repos = new Set();
 
@@ -149,10 +116,11 @@
       return repos;
     };
 
-    const bigHtmlToRepos = (html, type) => { // type: 'issues' or 'pulls'
+    const bigHtmlToRepos = (html, type) => { // type: 'issues', 'pull' or 'commits'
       const repos = new Set();
 
-      const regex = new RegExp(`<a.*href="/(.*)/(.*)/${type}/`, 'g');
+      const charAfterType = type === 'commits' ? '?' : '/';
+      const regex = new RegExp(`<a.*href="/(.*)/(.*)/${type}${charAfterType}`, 'g');
       let linkToIssue;
       while ((linkToIssue = regex.exec(html))) {
         const owner = linkToIssue[1];
@@ -204,17 +172,11 @@
         currDate = prevDay(currDate);
 
         return (async () => {
-          const userCommits = await fetchRetry(
-            `https://github.com/users/${user}/created_commits?from=${currDateStr}&to=${currDateStr}`
-          );
-          const userCommitsHtml = await userCommits.text();
-          const commitsRepos = commitsHtmlToRepos(userCommitsHtml);
-
-          const userPRsAndHotIssues = await fetchRetry(
+          const bigHtml = await (await fetchRetry(
               `https://github.com/${user}?from=${currDateStr}`,
-          );
-          const userPRsAndHotIssuesHtml = await userPRsAndHotIssues.text();
-          const prsRepos = bigHtmlToRepos(userPRsAndHotIssuesHtml, 'pull');
+          )).text();
+          const commitsRepos = bigHtmlToRepos(bigHtml, 'commits');
+          const prsRepos = bigHtmlToRepos(bigHtml, 'pull');
 
           let issuesRepos = [];
           let hotIssuesRepos = [];
@@ -225,7 +187,7 @@
             const userIssuesHtml = await userIssues.text();
             issuesRepos = issuesHtmlToRepos(userIssuesHtml);
 
-            hotIssuesRepos = bigHtmlToRepos(userPRsAndHotIssuesHtml, 'issues');
+            hotIssuesRepos = bigHtmlToRepos(bigHtml, 'issues');
           }
 
           progressSpinner.stop(); // temporary stop for logging

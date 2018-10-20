@@ -70,7 +70,6 @@ Normally in order to retrieve all repositories a user has interacted with, one s
 Instead we noticed that the "Contribution Activity" on the
 [profile pages](https://github.com/AurelienLourot) queries such URLs in the background:
 
-* https://github.com/users/AurelienLourot/created_commits?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_repositories?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_pull_request_reviews?from=2018-05-17&to=2018-05-17
 * https://github.com/users/AurelienLourot/created_issues?from=2018-07-10&to=2018-07-10
@@ -103,6 +102,13 @@ So we're doing the same :)
 >               <a href="/tt-gf/ant-ivy/pull/2" class="content-title no-underline">
 >   ```
 
+> * Same now with `created_commits`:
+>
+>   ```bash
+>   $ curl -s "https://github.com/AurelienLourot?from=2017-08-27" | grep commits?
+>         <a href="/AurelienLourot/mybeir.ut/commits?author=AurelienLourot&amp;since=2017-08-27&amp;until=2017-08-28" class="f6 muted-link ml-1">
+>   ```
+
 ### Why is it so slow?
 
 We hit a [rate limit](https://en.wikipedia.org/wiki/Rate_limiting). And since it's not an official
@@ -128,6 +134,10 @@ i.e. commits that would also appear in the activity section of your GitHub profi
 doesn't discover commits in forks.
 
 ## Changelog
+
+**2.2.3** (2018-10-20):
+  * [ghuser-io/ghuser.io#172](https://github.com/ghuser-io/ghuser.io/issues/172) Fix after GitHub's
+    interface has changed. The `created_commits` "endpoint" is gone.
 
 **2.2.2** (2018-10-13):
   * [ghuser-io/ghuser.io#172](https://github.com/ghuser-io/ghuser.io/issues/172) Fix after GitHub's

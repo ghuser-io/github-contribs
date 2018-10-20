@@ -31,13 +31,15 @@ test('fetches commits and PRs', async t => {
   const result = await m.fetch('AurelienLourot', '2017-08-26', '2017-08-28', ora, console);
 
   // Because AurelienLourot had no activity on 2017-08-26, GitHub chooses to display older activity
-  // on his profile, namely a PR for `brandon-rhodes/uncommitted` on 2017-07-08. This is a known
-  // limitation and we think it's better to discover too much than not enough.
+  // on his profile, namely a PR for `brandon-rhodes/uncommitted` on 2017-07-08 and some commits to
+  // `AurelienLourot/myberl.in`. This is a known limitation and we think it's better to discover too
+  // much than not enough.
 
-  t.is(result.size, 3);
+  t.is(result.size, 4);
   t.true(result.has('AurelienLourot/mybeir.ut'));
   t.true(result.has('tt-gf/ant-ivy'));
   t.true(result.has('brandon-rhodes/uncommitted'));
+  t.true(result.has('AurelienLourot/myberl.in'));
 });
 
 test('fetches issues', async t => {
