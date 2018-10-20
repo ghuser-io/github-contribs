@@ -3,7 +3,7 @@
 [![npm version](https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@dd75675a1e8a2c4ba708bf14deaf92c6adcaddc4/thirdparty/badges/npm.svg)](https://www.npmjs.com/package/@ghuser/github-contribs)
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
-[<img src="https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@b301e71d69531b0edf1befd1f865a70ced557014/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/ghuser-io/github-contribs)
+[<img src="https://cdn.jsdelivr.net/gh/ghuser-io/github-contribs@51cced98637746769b8c7b0b8e84231b75893fde/thirdparty/octicons/repo.svg" align="left" width="64" height="64">](https://github.com/ghuser-io/github-contribs)
 
 # github-contribs
 
