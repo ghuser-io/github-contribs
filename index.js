@@ -83,39 +83,6 @@
   };
 
   const getContribs = async (user, joinDate, since, until, ora, console, alsoIssues) => {
-    const issuesHtmlToRepos = html => {
-      const repos = new Set();
-
-      const handler = new htmlparser.DefaultHandler((error, dom) => {});
-      const parser = new htmlparser.Parser(handler);
-      parser.parseComplete(html);
-      for (let i = 0; i < handler.dom.length; ++i) {
-        if (handler.dom[i].type === 'tag' && handler.dom[i].name === 'div') {
-          const div1 = handler.dom[i].children;
-          for (let j = 0; j < div1.length; ++j) {
-            if (div1[j].type === 'tag' && div1[j].name === 'div') {
-              const div2 = div1[j].children;
-              for (let k = 0; k < div2.length; ++k) {
-                if (div2[k].type === 'tag' && div2[k].name === 'button') {
-                  const button = div2[k].children;
-                  for (let l = 0; l < button.length; ++l) {
-                    if (button[l].type === 'tag' && button[l].name === 'span') {
-                      const span = button[l].children[0].data.trim();
-                      if (span) {
-                        repos.add(span);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-
-      return repos;
-    };
-
     const bigHtmlToRepos = (html, type) => { // type: 'issues', 'pull' or 'commits'
       const repos = new Set();
 
@@ -177,18 +144,7 @@
           )).text();
           const commitsRepos = bigHtmlToRepos(bigHtml, 'commits');
           const prsRepos = bigHtmlToRepos(bigHtml, 'pull');
-
-          let issuesRepos = [];
-          let hotIssuesRepos = [];
-          if (alsoIssues) {
-            const userIssues = await fetchRetry(
-              `https://github.com/users/${user}/created_issues?from=${currDateStr}&to=${currDateStr}`,
-            );
-            const userIssuesHtml = await userIssues.text();
-            issuesRepos = issuesHtmlToRepos(userIssuesHtml);
-
-            hotIssuesRepos = bigHtmlToRepos(bigHtml, 'issues');
-          }
+          const issuesRepos = alsoIssues ? bigHtmlToRepos(bigHtml, 'issues') : [];
 
           progressSpinner.stop(); // temporary stop for logging
           for (const repo of commitsRepos) {
@@ -201,10 +157,6 @@
           }
           for (const repo of issuesRepos) {
             console.log(`${currDateStr}: (issues)     ${repo}`);
-            result.add(repo);
-          }
-          for (const repo of hotIssuesRepos) {
-            console.log(`${currDateStr}: (hot issues) ${repo}`);
             result.add(repo);
           }
           progressSpinner.start(
