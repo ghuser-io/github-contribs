@@ -45,12 +45,12 @@ test('fetches commits and PRs', async t => {
 test('fetches issues and reviewed pull requests', async t => {
   // RichardLitt had the following activity:
   // * 2018-08-07: 1 issue in orbitdb/welcome
-  //               4 reviewed pull requests in rtfd/readthedocs.org
+  //               4 reviewed pull requests in readthedocs/readthedocs.org
 
   const result = await m.fetch('RichardLitt', '2018-08-07', '2018-08-07', ora, console, true);
   t.is(result.size, 2);
   t.true(result.has('orbitdb/welcome'));
-  t.true(result.has('rtfd/readthedocs.org'));
+  t.true(result.has('readthedocs/readthedocs.org'));
 });
 
 test('fetches hot issues', async t => {
